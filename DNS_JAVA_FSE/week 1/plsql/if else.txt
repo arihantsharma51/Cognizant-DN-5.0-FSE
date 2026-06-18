@@ -1,0 +1,15 @@
+DECLARE
+  name varchar2(10);
+  age number;
+BEGIN 
+  name:='Arihant';
+  age:=21;
+  dbms_output.put_line('Myname:-'||name); 
+  dbms_output.put_line('MyAge:-'||age); 
+  if mod(age,2)=0 then
+    dbms_output.put_line('your age is even'); 
+  else
+    dbms_output.put_line('your age is odd'); 
+  end if;
+END;
+/
