@@ -1,15 +1,118 @@
-DECLARE
-  name varchar2(10);
-  age number;
-BEGIN 
+-----------------------------------1 START
+declare
+  name varchar(8);
+begin 
   name:='Arihant';
-  age:=21;
-  dbms_output.put_line('Myname:-'||name); 
-  dbms_output.put_line('MyAge:-'||age); 
-  if mod(age,2)=0 then
-    dbms_output.put_line('your age is even'); 
-  else
-    dbms_output.put_line('your age is odd'); 
-  end if;
-END;
+  DBMS_output.put_line('My Name is:-'||name);
+end;
 /
+------------------------------------2 VARIABLE
+declare
+  a number(8);
+  b number(8);
+begin 
+  a:=10;
+  b:=20;
+  DBMS_output.put_line(a+b);
+end;
+/
+----------------------------------3 IF ELSE
+declare
+  a number(8);
+begin 
+  a:=10;
+  if (a)=10 then
+    DBMS_output.put_line(a);
+  else
+    DBMS_output.put_line('No');
+  end if;
+end;
+/
+----------------------------------4 IF ELSE
+declare
+  a number(8);
+begin 
+  a:=18;
+  if (a)>=18 then
+    DBMS_output.put_line('this person can vote');
+  else
+    DBMS_output.put_line('this person is under age');
+  end if;
+end;
+/
+----------------------------------5 FOR LOOP
+declare
+ total number(8);
+begin 
+  total:=0;
+  for i in 1..5 loop
+    total:=total+i;
+  end loop;
+  DBMS_output.put_line(total);
+end;
+/
+----------------------------------6 WHILE LOOP
+declare
+ total number(8);
+ counter number(8);
+begin 
+  total:=0;
+  counter:=1;
+  while counter<=10 loop
+    total:=total+counter;
+    counter := counter+1;
+  end loop;
+  DBMS_output.put_line(total);
+end;
+/
+----------------------------------7 EXIT LOOP
+declare
+ total number(8);
+ counter number(8);
+begin 
+  total:=0;
+  counter:=1;
+  loop
+    total:=total+counter;
+    counter := counter+1;
+    EXIT when counter>10;
+  end loop;
+  DBMS_output.put_line(total);
+end;
+/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
