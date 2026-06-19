@@ -1,118 +1,153 @@
------------------------------------1 START
-declare
-  name varchar(8);
+-- -----------------------------------1 START
+-- declare
+--   name varchar(8);
+-- begin 
+--   name:='Arihant';
+--   DBMS_output.put_line('My Name is:-'||name);
+-- end;
+-- /
+-- ------------------------------------2 VARIABLE
+-- declare
+--   a number(8);
+--   b number(8);
+-- begin 
+--   a:=10;
+--   b:=20;
+--   DBMS_output.put_line(a+b);
+-- end;
+-- /
+-- ----------------------------------3 IF ELSE
+-- declare
+--   a number(8);
+-- begin 
+--   a:=10;
+--   if (a)=10 then
+--     DBMS_output.put_line(a);
+--   else
+--     DBMS_output.put_line('No');
+--   end if;
+-- end;
+-- /
+-- ----------------------------------4 IF ELSE
+-- declare
+--   a number(8);
+-- begin 
+--   a:=18;
+--   if (a)>=18 then
+--     DBMS_output.put_line('this person can vote');
+--   else
+--     DBMS_output.put_line('this person is under age');
+--   end if;
+-- end;
+-- /
+-- ----------------------------------5 FOR LOOP
+-- declare
+--  total number(8);
+-- begin 
+--   total:=0;
+--   for i in 1..5 loop
+--     total:=total+i;
+--   end loop;
+--   DBMS_output.put_line(total);
+-- end;
+-- /
+-- ----------------------------------6 WHILE LOOP
+-- declare
+--  total number(8);
+--  counter number(8);
+-- begin 
+--   total:=0;
+--   counter:=1;
+--   while counter<=10 loop
+--     total:=total+counter;
+--     counter := counter+1;
+--   end loop;
+--   DBMS_output.put_line(total);
+-- end;
+-- /
+-- ----------------------------------7 EXIT LOOP
+-- declare
+--  total number(8);
+--  counter number(8);
+-- begin 
+--   total:=0;
+--   counter:=1;
+--   loop
+--     total:=total+counter;
+--     counter := counter+1;
+--     EXIT when counter>10;
+--   end loop;
+--   DBMS_output.put_line(total);
+-- end;
+-- /
+-- -------------------------------------ques
+-- begin 
+--   for i in 1..10 loop
+--     DBMS_output.put_line('5 X '||i||'='||(5*i));
+--   end loop;
+-- end;
+-- /
+-- -------------------------------------ques
+-- declare
+--   total number(8);
+-- begin 
+--   total:=1;
+--   while total<=10 loop
+--    DBMS_output.put_line(total);
+--    total:=total +1;
+--    end loop;
+-- end;
+-- /
+-- -------------------------------------ques
+-- declare
+--   total number(8);
+-- begin 
+--   total:=10;
+--   while total>=1 loop
+--    DBMS_output.put_line(total);
+--    total:=total-1;
+--    end loop;
+-- end;
+-- /
+-- -------------------------------------ques
+-- declare
+--   i number(8);
+-- begin 
+--   i:=1;
+--   loop
+--     exit when(i>5);
+--     DBMS_output.put_line(i);
+--     i:=i+1;
+--   end loop;
+-- end;
+-- /
+----------------------------------------function
+-- create or replace function show
+-- return varchar2
+-- is
+-- begin
+--   return 'hello world';
+-- end;
+-- /
+
+-- begin
+--   DBMS_output.put_line(show);
+-- end;
+-- /
+-------------------------------------------------ques
+create or replace function ve(n in number,m in number)
+return number
+is
+var number;
 begin 
-  name:='Arihant';
-  DBMS_output.put_line('My Name is:-'||name);
+  var:=(n+m);
+  return var;
 end;
 /
-------------------------------------2 VARIABLE
 declare
-  a number(8);
-  b number(8);
+total number;
 begin 
-  a:=10;
-  b:=20;
-  DBMS_output.put_line(a+b);
-end;
-/
-----------------------------------3 IF ELSE
-declare
-  a number(8);
-begin 
-  a:=10;
-  if (a)=10 then
-    DBMS_output.put_line(a);
-  else
-    DBMS_output.put_line('No');
-  end if;
-end;
-/
-----------------------------------4 IF ELSE
-declare
-  a number(8);
-begin 
-  a:=18;
-  if (a)>=18 then
-    DBMS_output.put_line('this person can vote');
-  else
-    DBMS_output.put_line('this person is under age');
-  end if;
-end;
-/
-----------------------------------5 FOR LOOP
-declare
- total number(8);
-begin 
-  total:=0;
-  for i in 1..5 loop
-    total:=total+i;
-  end loop;
+  total:=ve(2,3);
   DBMS_output.put_line(total);
 end;
 /
-----------------------------------6 WHILE LOOP
-declare
- total number(8);
- counter number(8);
-begin 
-  total:=0;
-  counter:=1;
-  while counter<=10 loop
-    total:=total+counter;
-    counter := counter+1;
-  end loop;
-  DBMS_output.put_line(total);
-end;
-/
-----------------------------------7 EXIT LOOP
-declare
- total number(8);
- counter number(8);
-begin 
-  total:=0;
-  counter:=1;
-  loop
-    total:=total+counter;
-    counter := counter+1;
-    EXIT when counter>10;
-  end loop;
-  DBMS_output.put_line(total);
-end;
-/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
