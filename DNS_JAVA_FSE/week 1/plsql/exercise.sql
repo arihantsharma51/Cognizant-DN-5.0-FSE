@@ -49,7 +49,7 @@ SET Balance=15000
 WHERE CustomerID=1;
 COMMIT;
 
-DECLARE
+DECLARE-----------------------------------------------------------------------3
     CURSOR C
 IS
     select C.CUSTOMERID,C.NAME,l.ENDDATE from CUSTOMERS C
@@ -65,3 +65,74 @@ END;
 /
 COMMIT;
 
+CREATE OR REPLACE PROCEDURE SafeTransferFunds(------------------------------------------------------4
+    p_from_acc NUMBER,
+    p_to_acc NUMBER,
+    p_amount NUMBER
+)
+IS
+    v_balance NUMBER;
+    insufficient_funds EXCEPTION;
+BEGIN
+    SELECT Balance
+    INTO v_balance
+    FROM Accounts
+    WHERE AccountID = p_from_acc;
+
+    IF v_balance < p_amount THEN
+        RAISE insufficient_funds;
+    END IF;
+
+    UPDATE Accounts
+    SET Balance = Balance - p_amount
+    WHERE AccountID = p_from_acc;
+
+    UPDATE Accounts
+    SET Balance = Balance + p_amount
+    WHERE AccountID = p_to_acc;
+
+    COMMIT;
+
+    DBMS_OUTPUT.PUT_LINE('Transfer Successful');
+
+EXCEPTION
+    WHEN insufficient_funds THEN
+        ROLLBACK;
+        DBMS_OUTPUT.PUT_LINE('Transfer Failed: Insufficient Balance');
+
+    WHEN OTHERS THEN
+        ROLLBACK;
+        DBMS_OUTPUT.PUT_LINE('Unexpected Error: ' || SQLERRM);
+END;
+/
+
+CREATE OR REPLACE PROCEDURE UpdateSalary(
+    p_empid NUMBER,
+    p_percent NUMBER
+)
+IS
+    v_count NUMBER;
+BEGIN
+
+    SELECT COUNT(*)
+    INTO v_count
+    FROM Employees
+    WHERE EmployeeID = p_empid;
+
+    IF v_count = 0 THEN
+        DBMS_OUTPUT.PUT_LINE('Employee Not Found');
+    ELSE
+        UPDATE Employees
+        SET Salary = Salary + (Salary * p_percent / 100)
+        WHERE EmployeeID = p_empid;
+
+        COMMIT;
+
+        DBMS_OUTPUT.PUT_LINE('Salary Updated Successfully');
+    END IF;
+
+EXCEPTION
+    WHEN OTHERS THEN
+        DBMS_OUTPUT.PUT_LINE('Error: ' || SQLERRM);
+END;
+/
