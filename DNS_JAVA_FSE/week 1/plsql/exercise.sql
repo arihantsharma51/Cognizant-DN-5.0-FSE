@@ -106,7 +106,7 @@ EXCEPTION
 END;
 /
 
-CREATE OR REPLACE PROCEDURE UpdateSalary(
+CREATE OR REPLACE PROCEDURE UpdateSalary(-------------------------------------------------5
     p_empid NUMBER,
     p_percent NUMBER
 )
@@ -134,5 +134,53 @@ BEGIN
 EXCEPTION
     WHEN OTHERS THEN
         DBMS_OUTPUT.PUT_LINE('Error: ' || SQLERRM);
+END;
+/
+
+SELECT * FROM Customers;
+
+SET SERVEROUTPUT ON;
+CREATE OR REPLACE PROCEDURE AddNewCustomer----------------------------------------------------6
+(
+    p_CustomerID IN NUMBER,
+    p_Name       IN VARCHAR2,
+    p_DOB        IN DATE,
+    p_Balance    IN NUMBER
+)
+IS
+
+BEGIN
+
+    INSERT INTO Customers
+    (
+        CustomerID,
+        Name,
+        DOB,
+        Balance
+    )
+    VALUES
+    (
+        p_CustomerID,
+        p_Name,
+        p_DOB,
+        p_Balance
+    );
+
+    DBMS_OUTPUT.PUT_LINE(
+    'Customer Added Successfully.');
+
+EXCEPTION
+
+    WHEN DUP_VAL_ON_INDEX THEN
+
+        DBMS_OUTPUT.PUT_LINE(
+        'Error: Customer ID already exists.');
+
+    WHEN OTHERS THEN
+
+        DBMS_OUTPUT.PUT_LINE(
+        'Unexpected Error: '
+        || SQLERRM);
+
 END;
 /
