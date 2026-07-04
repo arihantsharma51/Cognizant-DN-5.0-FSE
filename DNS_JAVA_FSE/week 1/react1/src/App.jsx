@@ -1,6 +1,6 @@
 import React from 'react'
 import Navbar from "./Navbar"
-import footer from "./Footer"
+import main from "./main"
 import Footer from './Footer'
 
 
