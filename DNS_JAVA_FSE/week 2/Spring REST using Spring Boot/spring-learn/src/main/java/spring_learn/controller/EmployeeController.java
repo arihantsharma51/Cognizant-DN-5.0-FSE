@@ -14,6 +14,10 @@ public class EmployeeController {
 
     @Autowired 
     private EmployeeService service;
+    @GetMapping("/search")
+    public List<Employee> searchByName(@RequestParam String name) {
+        return service.searchByName(name);
+    }
 
     @PostMapping
     public Employee addEmployee(@RequestBody Employee emp) {

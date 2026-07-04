@@ -1,4 +1,5 @@
 package spring_learn.model;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.*;
 
@@ -14,6 +15,7 @@ public class Employee {
 
     private String email;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "department_id")
     private Department department;

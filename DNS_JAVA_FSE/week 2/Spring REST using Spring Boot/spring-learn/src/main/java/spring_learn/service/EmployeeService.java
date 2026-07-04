@@ -8,28 +8,31 @@ import org.springframework.stereotype.Service;
 import spring_learn.model.Employee;
 import spring_learn.repository.EmployeeRepository;
 
-@Service // business logic layer
+@Service 
 public class EmployeeService {
 
-    @Autowired // inject repository
+    @Autowired 
     private EmployeeRepository repo;
 
-    // CREATE / UPDATE
+
     public Employee saveEmployee(Employee emp) {
         return repo.save(emp);
     }
+    public List<Employee> searchByName(String name) {
+    return repo.findByNameContaining(name);
+}
 
-    // READ ALL
+    
     public List<Employee> getAllEmployees() {
         return repo.findAll();
     }
 
-    // READ BY ID
+
     public Employee getEmployeeById(Long id) {
         return repo.findById(id).orElse(null);
     }
 
-    // DELETE
+    
     public void deleteEmployee(Long id) {
         repo.deleteById(id);
     }
