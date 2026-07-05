@@ -8,15 +8,9 @@ public class CalculatorServiceTest {
 
     CalculatorService service;
 
-    @BeforeAll
-    static void beforeAllTests() {
-        System.out.println("===== Starting Calculator Tests =====");
-    }
-
     @BeforeEach
     void setUp() {
         service = new CalculatorService();
-        System.out.println("Object Created");
     }
 
     @Test
@@ -26,40 +20,18 @@ public class CalculatorServiceTest {
     }
 
     @Test
-    void testNotEquals() {
-        int result = service.add(10, 20);
-        assertNotEquals(50, result);
+    void testDivide() {
+        int result = service.divide(20, 5);
+        assertEquals(4, result);
     }
 
     @Test
-    void testTrue() {
-        assertTrue(20 > 10);
+    void testDivideByZero() {
+
+        assertThrows(ArithmeticException.class, () -> {
+            service.divide(20, 0);
+        });
+
     }
 
-    @Test
-    void testFalse() {
-        assertFalse(20 < 10);
-    }
-
-    @Test
-    void testNotNull() {
-        assertNotNull(service);
-    }
-
-    @Test
-    void testNull() {
-        String name = null;
-        assertNull(name);
-    }
-
-    @AfterEach
-    void tearDown() {
-        System.out.println("Test Completed");
-    }
-
-    @AfterAll
-    static void afterAllTests() {
-        System.out.println("===== All Tests Finished =====");
-    }
-    
 }
