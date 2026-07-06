@@ -12,5 +12,10 @@ public class CalculatorService1 {
     public int divide(int a, int b) {
         return a / b;
     }
+    public void processData() throws InterruptedException {
+
+    Thread.sleep(1000);
+
+}
 
 }
