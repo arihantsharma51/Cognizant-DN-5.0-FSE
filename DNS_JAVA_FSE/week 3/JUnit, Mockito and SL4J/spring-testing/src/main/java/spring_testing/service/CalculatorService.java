@@ -1,16 +1,16 @@
-// package spring_testing.service;
+package spring_testing.service;
 
-// import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Service;
 
-// @Service
-// public class CalculatorService {
+@Service
+public class CalculatorService {
 
-//     public int add(int a, int b) {
-//         return a + b;
-//     }
+    public int add(int a, int b) {
+        return a + b;
+    }
 
-//     public int divide(int a, int b) {
-//         return a / b;
-//     }
+    public int divide(int a, int b) {
+        return a / b;
+    }
 
-// }
+}
