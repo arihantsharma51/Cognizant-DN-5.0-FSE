@@ -19,5 +19,4 @@ public class AccountController {
         return service.getAccount(id);
 
     }
-
 }

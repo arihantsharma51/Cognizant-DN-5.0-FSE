@@ -1,10 +1,13 @@
 package com.example.account_service.model;
 
+import com.example.account_service.dto.Loan;
+
 public class Account {
 
     private Long accountId;
     private String accountHolderName;
     private double balance;
+    private Loan loan;
 
     public Account() {
     }
@@ -37,5 +40,13 @@ public class Account {
 
     public void setBalance(double balance) {
         this.balance = balance;
+        
+    }
+    public Loan getLoan() {
+    return loan;
+    }
+
+    public void setLoan(Loan loan) {
+        this.loan = loan;
     }
 }
